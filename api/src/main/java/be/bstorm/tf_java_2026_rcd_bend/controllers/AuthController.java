@@ -10,6 +10,7 @@ import be.bstorm.tf_java_2026_rcd_bend.utils.JwtUtils;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,6 +24,7 @@ public class AuthController {
     private final AuthService authService;
     private final JwtUtils  jwtUtils;
 
+    @PreAuthorize("isAnonymous()")
     @PostMapping("/register")
     public ResponseEntity<Void> register(
             @Valid @RequestBody RegisterForm form
@@ -32,6 +34,7 @@ public class AuthController {
         return ResponseEntity.accepted().build();
     }
 
+    @PreAuthorize("isAnonymous()")
     @PostMapping("/login")
     public ResponseEntity<UserTokenDto> login(
             @Valid @RequestBody LoginForm form
