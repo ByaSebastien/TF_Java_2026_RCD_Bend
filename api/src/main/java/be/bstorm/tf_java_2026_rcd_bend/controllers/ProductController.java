@@ -1,6 +1,7 @@
 package be.bstorm.tf_java_2026_rcd_bend.controllers;
 
 import be.bstorm.tf_java_2026_rcd_bend.entities.Product;
+import be.bstorm.tf_java_2026_rcd_bend.models.product.ProductDetailsDto;
 import be.bstorm.tf_java_2026_rcd_bend.models.product.ProductIndexDto;
 import be.bstorm.tf_java_2026_rcd_bend.models.shared.CustomPage;
 import be.bstorm.tf_java_2026_rcd_bend.services.ProductService;
@@ -11,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
@@ -40,5 +42,13 @@ public class ProductController {
         );
 
         return ResponseEntity.ok(customPage);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ProductDetailsDto> getProduct(@PathVariable UUID id) {
+
+        ProductDetailsDto dto = ProductDetailsDto.fromProduct(productService.getProductById(id));
+
+        return ResponseEntity.ok(dto);
     }
 }

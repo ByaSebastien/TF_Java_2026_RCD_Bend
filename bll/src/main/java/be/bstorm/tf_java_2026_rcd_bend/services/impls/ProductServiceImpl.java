@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -19,5 +20,11 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Page<Product> getProducts(Pageable pageable) {
         return productRepository.findAll(pageable);
+    }
+
+    @Override
+    public Product getProductById(UUID id) {
+        return productRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Product not found with id: " + id));
     }
 }
