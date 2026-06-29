@@ -31,6 +31,16 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
+    public User login(String username, String password) {
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        if(!passwordEncoder.matches(password, user.getPassword())) {
+            throw new RuntimeException("Password doesn't match");
+        }
+        return user;
+    }
+
+    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
