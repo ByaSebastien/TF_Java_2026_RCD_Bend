@@ -1,10 +1,10 @@
 package be.bstorm.tf_java_2026_rcd_bend.controllers;
 
 import be.bstorm.tf_java_2026_rcd_bend.entities.User;
-import be.bstorm.tf_java_2026_rcd_bend.models.forms.user.LoginForm;
-import be.bstorm.tf_java_2026_rcd_bend.models.forms.user.RegisterForm;
-import be.bstorm.tf_java_2026_rcd_bend.models.forms.user.UserDto;
-import be.bstorm.tf_java_2026_rcd_bend.models.forms.user.UserTokenDto;
+import be.bstorm.tf_java_2026_rcd_bend.models.user.LoginForm;
+import be.bstorm.tf_java_2026_rcd_bend.models.user.RegisterForm;
+import be.bstorm.tf_java_2026_rcd_bend.models.user.UserDto;
+import be.bstorm.tf_java_2026_rcd_bend.models.user.UserTokenDto;
 import be.bstorm.tf_java_2026_rcd_bend.services.AuthService;
 import be.bstorm.tf_java_2026_rcd_bend.utils.JwtUtils;
 import jakarta.validation.Valid;

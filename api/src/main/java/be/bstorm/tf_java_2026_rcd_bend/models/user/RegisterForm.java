@@ -1,4 +1,4 @@
-package be.bstorm.tf_java_2026_rcd_bend.models.forms.user;
+package be.bstorm.tf_java_2026_rcd_bend.models.user;
 
 import be.bstorm.tf_java_2026_rcd_bend.entities.User;
 import jakarta.validation.constraints.NotBlank;
